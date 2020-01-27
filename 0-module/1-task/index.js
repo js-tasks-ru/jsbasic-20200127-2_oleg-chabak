@@ -5,5 +5,8 @@
  * @returns {number}
  */
 function sum(m, n) {
-
+  return m + n;
 }
+
+let some = sum (5,6);
+console.log(some);

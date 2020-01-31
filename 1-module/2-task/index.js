@@ -10,8 +10,15 @@ function print(text) {
  * чтобы функция sayHello работала корректно
  */
 function isValid(name) {
+  if (name && name.toString().length >= 4 && !name.toString().includes(' ')) {
+    return true;
+  }
+  return false;
 }
 
+/**
+ * Эту функцию трогать не нужно
+ */
 function sayHello() {
   const userName = prompt('Введите ваше имя');
 
@@ -21,3 +28,5 @@ function sayHello() {
     print('Некорректное имя');
   }
 }
+
+sayHello('user');

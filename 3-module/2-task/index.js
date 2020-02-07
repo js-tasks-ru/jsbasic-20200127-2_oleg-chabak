@@ -8,14 +8,15 @@ function getMinMax(str) {
   const numbers = str
   // наполняем массив значениями, по разделителю пробел или запятая
     .split(/[ |,]+/)
-    // каждый элемент приводим к числу
-    .map( word => word * 1 )
+    // каждый элемент приводим к числу (num * 1)
     // если не число то не проходит фильтрацию
-    .filter( num => !isNaN(num));
+    .filter( num => !isNaN(num * 1));
   // numbers к этому моменту наполнился числами
   // вставляем в объект с результатом мин и макс
   return { min: Math.min(...numbers), max: Math.max(...numbers) };
 }
 
-const inputData = '1, -5.8 или 10, хотя 34 +  ,     , 0  -5.3 и 73';
+/*
+const inputData = '1, 5.8 или 10, хотя 34 +  ,   null  , 5.3 и 73';
 console.log(getMinMax(inputData));
+*/

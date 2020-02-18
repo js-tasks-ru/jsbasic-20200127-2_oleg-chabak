@@ -48,20 +48,28 @@ function SortableTable(items) {
    * @param {boolean} desc - признак того, что сортировка должна идти в обратном порядке
    */
   this.sort = (column, desc = false) => {
+    // опять получаем строки и приводим к нормальному массиву чтоб использовать методы массивов
     let tableRows = Array.from(this.el.tBodies[0].rows)
+      // пошла сортировка с функцией в качестве аргумента
+      // тут подробнее https://learn.javascript.ru/task/sort-table
       .sort((rowA, rowB) => {
-
         // проверка на включенный реверс
-        if (!desc) {
+        if (!desc) {  // если по возрастанию:
           // проверка на число или строку
           if (!isNaN(+rowA.cells[column].innerHTML)) {
+            // если число, то приводим к числу перед сравнением
             return +rowA.cells[column].innerHTML > +rowB.cells[column].innerHTML ? 1 : -1;
           }
+          // если не число, то сравниваем как есть
           return rowA.cells[column].innerHTML > rowB.cells[column].innerHTML ? 1 : -1;
-        } else {
+
+        } else { // иначе если по убыванию
+          // проверка на число или строку
           if (!isNaN(+rowA.cells[column].innerHTML)) {
+            // если число, то приводим к числу перед сравнением
             return +rowA.cells[column].innerHTML < +rowB.cells[column].innerHTML ? 1 : -1;
           }
+          // если не число, то сравниваем как есть
           return rowA.cells[column].innerHTML < rowB.cells[column].innerHTML ? 1 : -1;
         }
 
